@@ -1,0 +1,2 @@
+first-name,last-name,dob,gender,emplyment-status,salary,email,pan-number,region,city,state,street-address,postal-code
+YU,Vadde,2001-10-20,male,Salaried,0-15k,yn7675@gmail.com,BDJPYaa,501401,medchla,Medak,medchal,9490935843

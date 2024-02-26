@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet" />
+        <style type="text/tailwindcss">
+            @layer utilities {
+                .content-auto {
+                    content-visibility: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form
+            method="POST"
+            action="{{ url_for('otpPage') }}"
+            class="flex mx-auto max-w-2xl flex-col items-center gap-y-6 px-6 py-12">
+            <div class="space-y-12">
+                <div class="border-b border-gray-900/10 pb-12">
+                    <h1 class="text-2xl font-bold text-center text-gray-900">
+                        Check your Eligibility Now
+                    </h1>
+                    <p
+                        class="mt-1 text-sm leading-6 text-red-600 underline cursor-pointer flex justify-end">
+                        Existing User?
+                    </p>
+
+                    <div
+                        class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                        <div class="sm:col-span-3">
+                            <label
+                                for="first-name"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >First name<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="first-name"
+                                    id="first-name"
+                                    autocomplete="given-name"
+                                    class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-2"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label
+                                for="last-name"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Last name<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="last-name"
+                                    id="last-name"
+                                    autocomplete="family-name"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                        </div>
+                        <div class="sm:col-span-4">
+                            <div class="flex items-center space-x-4">
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="male"
+                                        class="h-4 w-4 text-blue-500" />
+                                    <span class="ml-2 text-gray-700">Male</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="female"
+                                        class="h-4 w-4 text-pink-500" />
+                                    <span class="ml-2 text-gray-700"
+                                        >Female</span
+                                    >
+                                </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Other"
+                                        class="h-4 w-4 text-pink-500" />
+                                    <span class="ml-2 text-gray-700"
+                                        >Other</span
+                                    >
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sm:col-span-3">
+                            <label
+                                for="dob"
+                                class="block text-gray-700 font-bold mb-2"
+                                >Date of Birth<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <input
+                                type="date"
+                                id="dob"
+                                name="dob"
+                                class="appearance-none border rounded w-3/4 py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" />
+                        </div>
+                        <div class="sm:col-span-4">
+                            <div class="flex items-center mb-4 space-x-5">
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="emplyment-status"
+                                        value="Salaried"
+                                        class="h-4 w-4 text-blue-500" />
+                                    <span class="ml-2 text-gray-700"
+                                        >Salaried</span
+                                    >
+                                </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="emplyment-status"
+                                        value="Unemployed"
+                                        class="h-4 w-4 text-pink-500" />
+                                    <span class="ml-2 text-gray-700"
+                                        >Unemployed</span
+                                    >
+                                </label>
+                                <label class="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="emplyment-status"
+                                        value="Self-Employed"
+                                        class="h-4 w-4 text-pink-500" />
+                                    <span class="ml-2 text-gray-700"
+                                        >Self-Employed</span
+                                    >
+                                </label>
+                            </div>
+                            <div class="sm:col-span-3">
+                                <label
+                                    for="salary"
+                                    class="block text-sm font-medium leading-6 text-gray-900"
+                                    >Salary<span class="text-red-500"
+                                        >*</span
+                                    ></label
+                                >
+                                <div class="mt-2">
+                                    <select
+                                        id="salary"
+                                        name="salary"
+                                        autocomplete="off"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-2/4 sm:text-sm sm:leading-1">
+                                        <option value="0-15k">0-15k</option>
+                                        <option value="15-25k">15-25k</option>
+                                        <option value="25-50k">25-50k</option>
+                                        <option value="50-100k">50-100k</option>
+                                        <option value=">100k">&gt;100k</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label
+                                for="email"
+                                class="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                                >Email address<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    autocomplete="email"
+                                    placeholder="Enter your email address"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+
+                            <label
+                                for="email"
+                                class="block text-sm font-medium leading-6 text-gray-900 mt-2"
+                                >Pan Number<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    id="pan-number"
+                                    name="pan-number"
+                                    type="text"
+                                    autocomplete="email"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3">
+                            <label
+                                for="state"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >State<span class="text-red-500">*</span></label
+                            >
+                            <div class="mt-2">
+                                <select
+                                    id="state"
+                                    name="state"
+                                    autocomplete="country-name"
+                                    class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                    <option value="Adilabad">Adilabad</option>
+                                    <option value="Bhadradri Kothagudem">
+                                        Bhadradri Kothagudem
+                                    </option>
+                                    <option value="Hyderabad">Hyderabad</option>
+                                    <option value="Jagtial">Jagtial</option>
+                                    <option value="Jangaon">Jangaon</option>
+                                    <option value="Jayashankar Bhupalpally">
+                                        Jayashankar Bhupalpally
+                                    </option>
+                                    <option value="Jogulamba Gadwal">
+                                        Jogulamba Gadwal
+                                    </option>
+                                    <option value="Kamareddy">Kamareddy</option>
+                                    <option value="Karimnagar">
+                                        Karimnagar
+                                    </option>
+                                    <option value="Khammam">Khammam</option>
+                                    <option value="Komaram Bheem Asifabad">
+                                        Komaram Bheem Asifabad
+                                    </option>
+                                    <option value="Mahabubabad">
+                                        Mahabubabad
+                                    </option>
+                                    <option value="Mahabubnagar">
+                                        Mahabubnagar
+                                    </option>
+                                    <option value="Mancherial">
+                                        Mancherial
+                                    </option>
+                                    <option value="Medak">Medak</option>
+                                    <option value="Medchal–Malkajgiri">
+                                        Medchal–Malkajgiri
+                                    </option>
+                                    <option value="Nagarkurnool">
+                                        Nagarkurnool
+                                    </option>
+                                    <option value="Nalgonda">Nalgonda</option>
+                                    <option value="Nirmal">Nirmal</option>
+                                    <option value="Nizamabad">Nizamabad</option>
+                                    <option value="Peddapalli">
+                                        Peddapalli
+                                    </option>
+                                    <option value="Rajanna Sircilla">
+                                        Rajanna Sircilla
+                                    </option>
+                                    <option value="Ranga Reddy">
+                                        Ranga Reddy
+                                    </option>
+                                    <option value="Sangareddy">
+                                        Sangareddy
+                                    </option>
+                                    <option value="Siddipet">Siddipet</option>
+                                    <option value="Suryapet">Suryapet</option>
+                                    <option value="Vikarabad">Vikarabad</option>
+                                    <option value="Wanaparthy">
+                                        Wanaparthy
+                                    </option>
+                                    <option value="Warangal Rural">
+                                        Warangal Rural
+                                    </option>
+                                    <option value="Warangal Urban">
+                                        Warangal Urban
+                                    </option>
+                                    <option value="Yadadri Bhuvanagiri">
+                                        Yadadri Bhuvanagiri
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-span-full">
+                            <label
+                                for="street-address"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Address</label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="street-address"
+                                    id="street-address"
+                                    autocomplete="street-address"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                <p
+                                    class="text-sm font-medium leading-6 text-red-600 mt-1">
+                                    ATTENTION:Address entered must be the same
+                                    as the address listed on your Offically
+                                    Vaild Document you will submit in the next
+                                    step.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2 sm:col-start-1">
+                            <label
+                                for="city"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >City</label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    autocomplete="address-level2"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label
+                                for="region"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >ZIP / Postal code</label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="region"
+                                    id="region"
+                                    autocomplete="address-level1"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2">
+                            <label
+                                for="postal-code"
+                                class="block text-sm font-medium leading-6 text-gray-900"
+                                >Mobile Number<span class="text-red-500"
+                                    >*</span
+                                ></label
+                            >
+                            <div class="mt-2">
+                                <input
+                                    type="text"
+                                    name="postal-code"
+                                    id="postal-code"
+                                    autocomplete="postal-code"
+                                    class="block px-2 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mx-auto py-4">
+                        <div class="mb-2">
+                            <input
+                                type="checkbox"
+                                id="termsCheckbox"
+                                class="mr-2 leading-tight"
+                                required />
+                            <label
+                                for="termsCheckbox"
+                                class="text-sm text-gray-700"
+                                >I have read and understood the vCard Terms &
+                                Conditions</label
+                            >
+                        </div>
+
+                        <div class="mb-3 py-1">
+                            <input
+                                type="checkbox"
+                                id="privacyCheckbox"
+                                class="mr-2 leading-tight"
+                                required />
+                            <label
+                                for="privacyCheckbox"
+                                class="text-sm text-gray-700"
+                                >I have read and understood the Privacy
+                                Policy</label
+                            >
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-center gap-x-6">
+                        <button
+                            type="submit"
+                            class="rounded-lg bg-indigo-600 px-5 py-6 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Get OTP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
